@@ -75,3 +75,15 @@ catch(error){
 }
 
 bakeChocolateBrownies();
+
+function fetchUser(){
+    return new Promise((resolve)=>{
+        setTimeout(()=>resolve({id:1,name:"Alice"}),2000);
+    });
+}
+async function displayUser(){
+    console.log("Fetching user...");
+const user = await fetchUser();
+console.log("user loaded: " + user.name);
+}
+displayUser();

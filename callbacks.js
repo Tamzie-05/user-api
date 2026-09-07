@@ -1,20 +1,16 @@
-const showMessage =(callback)=>{
-    console.log(callback);
+"use strict";
+const showMessag = (message) => {
+    console.log(message);
 };
-const firstMessage = (callback)=>{
-    setTimeout(()=>{
-        showMessage("hello");
-        callback(()=>{
-            console.log("fixed")
-        });
-    },1000);
-}
-const secondMessage =(callback)=>{
-    showMessage("beautiful");
-    callback();
-}
-const thirdMessage=()=>{
-    showMessage("world");
+const firstMessag = (message) => {
+    showMessag("Hello");
+    message();
 };
-firstMessage(secondMessage)
-secondMessage(thirdMessage)
+const secondMessag = () => {
+    showMessag("Beautiful");
+};
+const thirdMessag = () => {
+    showMessag("World");
+};
+firstMessag(secondMessag);
+thirdMessag();
