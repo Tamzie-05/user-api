@@ -1,7 +1,20 @@
-function math(a,b,sum){
-    console.log(sum(a,b));
+const showMessage =(callback)=>{
+    console.log(callback);
+};
+const firstMessage = (callback)=>{
+    setTimeout(()=>{
+        showMessage("hello");
+        callback(()=>{
+            console.log("fixed")
+        });
+    },1000);
 }
-function sum(a,b){
-    return a+b;
+const secondMessage =(callback)=>{
+    showMessage("beautiful");
+    callback();
 }
-math(3,4,sum);
+const thirdMessage=()=>{
+    showMessage("world");
+};
+firstMessage(secondMessage)
+secondMessage(thirdMessage)

@@ -1,22 +1,54 @@
-// Create a Promise
-let myPromise = new Promise(function(resolve, reject) {
-
-// Code that might take some time goes here
-
-  let success = true;
-  if (success) {
-    resolve("Done");
-  } else {
-    reject("Failed");
-  }
+/*const promise = new Promise((resolve, reject)=>{
+    const allThrough = false;
+    if(allThrough){
+        resolve("All things went well");
+    }else{
+        reject("An error occurred");
+    }
+});
+promise.then((value)=>{
+    console.log(value);
+}).catch((error)=>{
+    console.log(error);
+});
+*/
+/*const promise = new Promise((resolve, _reject) => {
+    resolve("Well Done! Promise One is Resolved");
 });
 
-// Using the Promise
-myPromise.then(
-  function(value) {myDisplayer(value)},
-  function(value) {myDisplayer(value)}
-);
+const promiseTwo = new Promise((resolve, _reject) => {
+    resolve("Well Done! Promise Two is Resolved");
+});
 
-// Funtion to display any text
-function myDisplayer(text) {
-  console.log(text);}
+const promiseThree = new Promise((_resolve, reject) => {
+    reject("Promise Three is Rejected. Unlucky!");
+});
+
+promise
+    .then((value) => {
+        console.log(value);
+        return promiseTwo;
+    })
+    .then((value) => {
+        console.log(value);
+        return promiseThree;
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+*/
+const promiseOne=new Promise((resolve,_reject)=>{
+    setTimeout(()=>{
+        resolve("Promise one resolved")
+    },2000);
+});
+
+const promiseFour=new Promise((_resolve,reject)=>{
+    setTimeout(()=>{
+        reject("Promise Four rejected")
+    },3000);
+});
+
+Promise.all([promiseOne,promiseFour])
+.then((data)=>console.log(data[0],data[1]))
+.catch((error)=>console.log(error));
